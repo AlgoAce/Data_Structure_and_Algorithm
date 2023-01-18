@@ -93,6 +93,7 @@ def draw_path(path):
     t.shape("turtle")
     t.down()
     t.pencolor("red")
+    t.down()
     t.speed(1)
     counter = 0
     for state in path:
@@ -104,7 +105,9 @@ def draw_path(path):
 def draw_visited(path):
     t.shape("turtle")
     t.up()
+    t.up()
     t.pencolor("red")
+    t.up()
     t.speed(1)
     counter = 0
     for state in path:
