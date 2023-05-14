@@ -77,37 +77,6 @@ Every key k in T.right is greater than the root key.
 - insert
 - delete
 
-# Hashing
-
-## Chaining
-
-***Example:***
-
-<img src="01.png" />
-
-**Complexity of chaining:**
-- searching
-- insert
-- delete
-
-## Linear Probing
-
-**Complexity of Linear Probing:**
-- searching
-- insert
-- delete
-
-<img src="01.png" />
-
-## Double Hashing
-
-**Complexity of Double Hashing:**
-- searching
-- insert
-- delete
-
-<img src="02.png" />
-
 
 
 

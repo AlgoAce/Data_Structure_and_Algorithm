@@ -51,7 +51,7 @@ while parent(v) exists and key(parent(v)) < key(v) do
 ```
 
 Time:
-O(height of heap) = O($\log n$).
+$O$(height of heap) = $O$($\log n$).
 
 ## Delete Max in heap
 

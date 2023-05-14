@@ -3,12 +3,13 @@
   - Binary Search
   - Stack and queue
   - Sorting (selection sort, insert sort, merge sort, quick sort)
-- Linked List
+- Linked List (finished)
   - Delete, add, search
   - Double Pointer
 - Tree
   - Delete, add, search
   - Binary search Tree
+  - Balanced Tree
 - Heap
   - Delete, add, search
   - Heap sort
