@@ -3,6 +3,7 @@
 Consider a Priority Queue ADT with following operations:
 - ```insert```: inserting an item tagged with a priority
 - ```deleteMax```: removing the item of highest priority
+- ```getMAx```: Get the item of highest priority
 
 How can we implement this Priority Queue ADT?
 
@@ -97,7 +98,7 @@ class MaxHeap:
     def __init__(self):
         self.root = None
 
-    # Implement insert, getMax, deleteMax, and helper methods here
+    # Implement insert, getMax, deleteMax, and delete here
 ```
 
 **Array-like Heap**
@@ -109,52 +110,7 @@ class MaxHeap:
     def __init__(self):
         self.heap = []
 
-    def insert(self, val):
-        self.heap.append(val)
-        self.__percolateUp(len(self.heap)-1)
-
-    def getMax(self):
-        if self.heap:
-            return self.heap[0]
-        return None
-
-    def deleteMax(self):
-        if len(self.heap) > 1:
-            maxVal = self.heap[0]
-            self.heap[0] = self.heap[-1]
-            del self.heap[-1]
-            self.__maxHeapify(0)
-            return maxVal
-        elif len(self.heap) == 1:
-            maxVal = self.heap[0]
-            del self.heap[0]
-            return maxVal
-        else:
-            return None
-
-    def __percolateUp(self, index):
-        parent = (index-1)//2
-        if index <= 0:
-            return
-        elif self.heap[parent] < self.heap[index]:
-            tmp = self.heap[parent]
-            self.heap[parent] = self.heap[index]
-            self.heap[index] = tmp
-            self.__percolateUp(parent)
-
-    def __maxHeapify(self, index):
-        left = (index * 2) + 1
-        right = (index * 2) + 2
-        largest = index
-        if len(self.heap) > left and self.heap[largest] < self.heap[left]:
-            largest = left
-        if len(self.heap) > right and self.heap[largest] < self.heap[right]:
-            largest = right
-        if largest != index:
-            tmp = self.heap[largest]
-            self.heap[largest] = self.heap[index]
-            self.heap[index] = tmp
-            self.__maxHeapify(largest)
+    # Implement insert, getMax, deleteMax, and delete here
 
 ```
 

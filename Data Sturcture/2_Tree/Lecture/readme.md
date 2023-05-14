@@ -1,6 +1,12 @@
 # Binary Search Tree (BST)
 
 A Binary Search Tree (BST) is a tree data structure in which each node has at most two children, referred to as the left child and the right child. For each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node. This property makes the search function more efficient.
+<img src = './img/03.png'>
+
+## BST Delete
+- If node is a leaf, just delete it.
+- If node has one child, move child up
+- Else put the right node's leftest leaf up.
 
 ## BST Implementation
 
