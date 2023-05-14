@@ -100,17 +100,6 @@ for i ← ⌊n/2⌋ downto 0 do
     bubble−down(A,i)
  ```
 
-## Using a Priority Queue to Sort
-
-```python
-def HeapSort (A):
-heapify (A)
-for i ← 0 to n − 1 do
-    A[n − 1 − i] ← heapDeleteMax(H)
-```
-
-Running time of HeapSort: $O(n log n)$
-
 
 
 
