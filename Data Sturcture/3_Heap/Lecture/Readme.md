@@ -41,6 +41,9 @@ A tree is heap-ordered if the key in each node is larger than or equal to the ke
 - The heap-order property might be violated: perform a bubble-up:
 - The new item bubbles up until it reaches its correct place in the heap.
 
+For example, we insert 48 to the following heap.
+<img src="./img/1.png" />
+
 ```python
 def bubble-up(v):
 v: a node of the heap
@@ -59,6 +62,10 @@ $O$(height of heap) = $O$($\log n$).
 - We replace root by the last leaf
 - The heap-order property might be violated: perform a bubble-down:
   
+
+<img src="./img/2.png" />
+
+
 ```python
 def bubble-down(v):
 v: a node of the heap
@@ -71,9 +78,87 @@ while v is not a leaf do
     else
         break
 ```
-Time: $O$(height of heap) = $O (log n)$.
+Time: $O$(height of heap) = $O (\log n)$.
 
-## Building Heap
+## Heap Structure
+
+**Tree-like Heap**
+
+Heaps can be implemented in a tree-like structure using Node objects. Here, each Node object maintains a reference to its left and right children and holds its value.
+
+```python
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+class MaxHeap:
+    def __init__(self):
+        self.root = None
+
+    # Implement insert, getMax, deleteMax, and helper methods here
+```
+
+**Array-like Heap**
+
+Heap can also be implemented in an array-like structure. The parent-child relationship can be calculated by their indices. If a node is represented by an index $i$, its left child is represented by $2*i + 1$ and its right child by $2*i + 2$. The parent of the node $i$ is given by $\frac{(i-1)}{2}$.
+
+```python
+class MaxHeap:
+    def __init__(self):
+        self.heap = []
+
+    def insert(self, val):
+        self.heap.append(val)
+        self.__percolateUp(len(self.heap)-1)
+
+    def getMax(self):
+        if self.heap:
+            return self.heap[0]
+        return None
+
+    def deleteMax(self):
+        if len(self.heap) > 1:
+            maxVal = self.heap[0]
+            self.heap[0] = self.heap[-1]
+            del self.heap[-1]
+            self.__maxHeapify(0)
+            return maxVal
+        elif len(self.heap) == 1:
+            maxVal = self.heap[0]
+            del self.heap[0]
+            return maxVal
+        else:
+            return None
+
+    def __percolateUp(self, index):
+        parent = (index-1)//2
+        if index <= 0:
+            return
+        elif self.heap[parent] < self.heap[index]:
+            tmp = self.heap[parent]
+            self.heap[parent] = self.heap[index]
+            self.heap[index] = tmp
+            self.__percolateUp(parent)
+
+    def __maxHeapify(self, index):
+        left = (index * 2) + 1
+        right = (index * 2) + 2
+        largest = index
+        if len(self.heap) > left and self.heap[largest] < self.heap[left]:
+            largest = left
+        if len(self.heap) > right and self.heap[largest] < self.heap[right]:
+            largest = right
+        if largest != index:
+            tmp = self.heap[largest]
+            self.heap[largest] = self.heap[index]
+            self.heap[index] = tmp
+            self.__maxHeapify(largest)
+
+```
+
+## Building a Heap from a list
 
 Problem statement: Given n items (in $A[0, · · ·, n − 1]$) build a heap containing all of them.
 
@@ -81,7 +166,7 @@ Problem statement: Given n items (in $A[0, · · ·, n − 1]$) build a heap con
  Start with an empty heap and insert items one at a time:
 
  ```python
-heapify1(A)
+def heapify1(A):
 A: an array
 initialize H as an empty heap
 for i = 0 to size(A) − 1 do
