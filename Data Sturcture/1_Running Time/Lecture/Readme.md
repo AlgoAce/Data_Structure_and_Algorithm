@@ -156,6 +156,7 @@ $$
 **Exercise**:
 
 What is the running time of the below code? Write in Big O form.
+
 ```Python
 def foo(L):
     for i in range (10000000):
@@ -164,6 +165,7 @@ def foo(L):
 
 ```Python
 def foo(L):
+    n = len(L)
     for i in range(n):
         for j in range(n):
             print (i * j)
@@ -171,6 +173,7 @@ def foo(L):
 
 ```Python
 def foo(L):
+    n = len(L)
     for i in range(n):
         if (i == n // 2):
             for j in range(i):
@@ -180,21 +183,34 @@ def foo(L):
 
 ## Analyzing recursive code
 
-**Exercise**:
+**Example**:
 ```Python
-def foo(L):
+def foo(n):
     if (n <= 0):
         return 0
     else:
-        return foo(n // 2) + 1
+        return foo(n / 2) 
 ```
 
 ```Python
-def foo(L):
+def foo(n):
     if (n <= 0):
         return 0
     else:
-        return foo(n / 2) + foo(n / 4)
+        return foo(n - 1) + foo(n - 1)
+```
+
+**Exercise**:
+```Python
+def foo(n):
+    temp = 0
+    for i in range(n):
+        temp += 1
+    
+    if (n <= 0):
+        return 0
+    else:
+        return foo(n / 2) + foo(n / 2)
 ```
 
 # Space Efficiency
@@ -237,15 +253,4 @@ def factorial(n):
 In this case, each call to ```factorial``` will remain on the call stack until it has been resolved, which means that for large values of n, the space complexity is $O(n)$.
 
 
-Now consider this function:
-
-```python
-def foo(n):
-    if n <= 0:
-        return 0
-    else:
-        return foo(n / 2) + foo(n / 4)
-```
-
-In this function, each call to foo makes two additional recursive calls. The total number of calls doubles with each level of recursion, leading to an exponential number of calls (and thus an exponential space complexity).
 
