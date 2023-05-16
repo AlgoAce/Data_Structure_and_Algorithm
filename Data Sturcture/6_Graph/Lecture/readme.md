@@ -1,5 +1,30 @@
 # Graph
 
+# Data Structures for Graphs:
+There are two main data structures to represent graphs: an adjacency matrix and a set of adjacency lists.
+
+## Adjacency Matrices
+Let $G=(V,E)$ be a graph with $|V|=n$ and $|E|=m$. The adjacency matrix of $G$ is an $n$ by $n$ matrix.
+
+<img src = './img/0.png'>
+
+## Adjacency Lists
+
+An adjacency list representation of G consists of n linked lists.
+
+For every u ∈ V , there is a linked list (called an adjacency list) which is named Adj[u].
+
+For every v ∈ V such that uv ∈ E, there is a node in Adj[u] labelled v. 
+
+$$
+Adj[1]: 2\\
+Adj[2]: 3 \\
+Adj[3]: 4 \\
+Adj[4]: 1\rightarrow5\\
+Adj[5]: 6\\
+Adj[6]: 
+$$
+
 ## Application
 
 ### Traveling Salesperson Problem
@@ -158,3 +183,73 @@ We want an algorithm to find the optimal solution.
 
 The frontier is a priority queue ordered by path cost. Expand the neighbour with the lpwesrt total cost.
 
+
+# Minimum Spanning Trees
+A spanning tree in a connected, undirected graph G = (V, E) is a subgraph T that is a tree containing every vertex of V .
+
+
+<img src = './img/1.png'>
+
+## First Algorithm
+
+```python   
+def spanningTree(G):
+    A = {}
+    for j in range(1, m)
+        if A ∪ {e_j} does not contain a cycle
+            then A ← A ∪ {e_j}
+    return (A)
+```
+
+## Kruskal’s Algorithm
+
+As a preprocessing step, sort and relabel the edges so
+
+$$w(e_1) ≤ w(e_2) ≤ ··· ≤ w(e_m)$$
+
+<img src = './img/1.png'>
+
+```python   
+def Kruskal(G):
+    A = {}
+    for j in range(1, m)
+        if A ∪ {e_j} does not contain a cycle
+            then A ← A ∪ {e_j}
+    return (A)
+```
+
+**Example**
+
+<img src = './img/2.png'>
+
+## Prim’s Algorithm
+
+1. We initially choose an arbitrary vertex $u_0$.
+2. Define $V_A = {u0}$ and $A = {e}$, where e is the minimum weight edge incident with $u_0$.
+3. A is always a single tree and $V_A$ is the set of vertices in A.
+4. At each step, we select the minimum weight edge that joins a vertex $u\in V_A$ to a vertex $v \notin V_A$.
+5. Then repeat these operations until A is a spanning tree.
+
+<img src = './img/1.png'>
+
+<img src = './img/3.png'>
+
+# Single Source Shortest Paths
+
+## Dijkstra’s Algorithm
+
+
+Dijkstra’s algorithm requires that the graph have no edge weights < 0; it works for directed or undirected graphs.
+
+S is a subset of vertices such that the shortest paths from $u_0$ to all vertices in S are known; initially, $S = {u_0}$.
+For all vertices $v \in S$, $D[v]$ is the weight of the shortest path $P_v$ from $u_0$ to $v$, and all vertices on Pv are in the set S.
+
+For all vertices $v \notin S$, $D[v]$ is the weight of the shortest path $P_v$ from $_u0$ to $v$ in which all interior vertices are in $S$.
+
+For $v \neq u0$, $\pi [v]$ is the predecessor of $v$ on the path $P_v$.
+
+At each stage of the algorithm, we choose $v \in V \S$ so that $D[v]$ is minimized, and then we add v to S (see the Lemma on the next slide). Then the arrays D and $\pi$ are updated appropriately.
+
+<img src = './img/5.png'>
+
+<img src = './img/4.png'>
