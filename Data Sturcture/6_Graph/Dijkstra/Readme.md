@@ -69,13 +69,14 @@ Assume we have graph has structed like below:
 
 ```python
 N = 10  # number of vertex in graph
+M = 20
 graph = [[] for _ in range(N + 1)]
 
 # 
-
-a, b, length = map(int, input().split())
-graph[a].append((b, length))
-graph[b].append((a, length))
+for i in range(M):
+    a, b, weight = map(int, input().split())
+    graph[a].append((b, weight))
+    graph[b].append((a, weight))
 ```
 
 ```python
@@ -108,9 +109,9 @@ def dijkstra(graph, src, N, K, target):
         
         shortest_path_found[curnode] = True
 
-        for adj, adj_length in graph[curnode]:
-            if (shortest_path_found[adj] == False and distance[adj] > distance[curnode] + adj_length):
-                distance[adj] = distance[curnode] + adj_length
+        for adj, adj_weight in graph[curnode]:
+            if (shortest_path_found[adj] == False and distance[adj] > distance[curnode] + adj_weight):
+                distance[adj] = distance[curnode] + adj_weight
 
     print(-1)
 ```
@@ -138,11 +139,11 @@ def dijkstra(graph, src, N, K, target):
         
         shortest_path_found[curnode] = True
 
-        for adj, adj_length in graph[curnode]:
-            new_distance = distance[island] + adj_length
+        for adj, adj_weight in graph[curnode]:
+            new_distance = distance[island] + adj_weight
 
             if (shortest_path_found[adj] == False and distance[adj] > new_distance):
-                distance[adj] = distance[curnode] + adj_length
+                distance[adj] = distance[curnode] + adj_weight
                 q.put((new_time, adj))
 
     print(-1)
