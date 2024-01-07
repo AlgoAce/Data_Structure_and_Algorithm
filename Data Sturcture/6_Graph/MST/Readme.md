@@ -103,5 +103,59 @@ def MST(N, graph, d):
             # we do not need this edge (there is a cycle)
 ```
 
+## Exercise
+
+
+**Problem Description**
+
+The city of Waterloo has buildings numbered 1, 2, . . . , N. The city has M pipes that connect
+pairs of buildings. Due to urban planning oversights, building 1 is the only sewage treatment plant
+in the city. Each pipe can be either active or inactive. The set of active pipes forms a valid plan
+if building 1 is directly or indirectly connected to each other building using active pipes. (Pipes
+directly connect pairs of buildings. Buildings X and Z are indirectly connected if X is directly or
+indirectly connected to Y , and Y is directly or indirectly connected to Z.)
+
+The municipal government of Watermoo is currently operating a valid plan of N −1 pipes today,
+but they think it is too expensive! Each pipe has a monthly maintenance fee that the city must pay
+when it is active, and the total cost of a valid plan is the sum of the maintenance fees of its active
+pipes. (Inactive pipes cost nothing.)
+
+The city wants you to minimize the cost of the plan, and they want you to do it quickly. Every
+day, the city will allow you to activate one pipe, and deactivate another pipe. How many days do
+you need to make the set of active pipes form a valid plan, whose cost is minimum among all valid
+plans
+
+Note that it is possible that the plan becomes invalid while you are working, but by the end it
+should be a valid plan.
+
+
+**Input Specification**
+
+The first line will contain the integers N, M, and D (1 ≤N ≤100 000, N −1 ≤M ≤
+200 000). Each of the next M lines contain three integers A<sub>i</sub>, B<sub>i</sub>, and C<sub>i</sub>, which
+means that there is a pipe from building A<sub>i</sub> to building B<sub>i</sub> that costs C<sub>i</sub> per month when activated
+(1 ≤A<sub>i</sub>, B<sub>i</sub> ≤N, 1 ≤C<sub>i</sub> ≤10<sup>9</sup>). The first N − 1 of these lines represent the valid plan the city is currently using.
+
+It is guaranteed that there is at most one pipe connecting any two buildings and no pipe connects a
+building to itself.
+
+**Output Specification**
+
+Output one integer on a single line, the minimum number of days to complete this task. If the
+initial valid plan is already an optimal plan, then output 0.
+
+**Sample Input 1**
+```
+4 4 0
+1 2 1
+2 3 2
+3 4 1
+4 1 1
+```
+**Output for Sample Input 1**
+
+```
+1
+```
 
 
