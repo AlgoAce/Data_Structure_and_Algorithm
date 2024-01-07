@@ -123,12 +123,12 @@ using `PriorityQueue` to reduce `minDistance`'s running time (sometime we use a 
 ```python
 def dijkstra(graph, src, N, K, target):
     distance = [1e7] * (N + 1)                              # Set all distance to the src = infity
-
     distance[src] = 0                                       # Set src to src = 0
-    curnode = src
 
     q = PriorityQueue()
     q.put((0, src))
+
+    curnode = src
 
     while(curnode != -1):
         _, curnode = q.get()
@@ -136,17 +136,40 @@ def dijkstra(graph, src, N, K, target):
         if (curnode == target):
             print(distance[target])
             return
-        
-        shortest_path_found[curnode] = True
 
         for adj, adj_weight in graph[curnode]:
-            new_distance = distance[island] + adj_weight
+            new_distance = distance[curnode] + adj_weight
 
-            if (shortest_path_found[adj] == False and distance[adj] > new_distance):
+            if (distance[adj] > new_distance):
                 distance[adj] = distance[curnode] + adj_weight
                 q.put((new_time, adj))
 
     print(-1)
+```
+
+```python
+def dijkstra(src, target, N, graph, removed_edge):
+    distances = [float('inf')] * (N+1)
+    distances[src] = 0
+    pq = [(0, src)]
+
+    while pq:
+        dist, curnode = heapq.heappop(pq)
+
+        if curnode == target:
+            return dist
+
+        for adj, adj_weight, _, i in graph[curnode]:
+            if i in removed_edge:
+                continue
+
+            new_distance = distances[curnode] + adj_weight
+
+            if (distances[adj] > new_distance):
+                heapq.heappush(pq, (new_distance, adj))
+                distances[adj] = new_distance
+
+    return float('inf')
 ```
 
 ## Exercise:
