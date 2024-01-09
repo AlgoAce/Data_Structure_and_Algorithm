@@ -68,11 +68,10 @@ The algorithm works by iteratively selecting the node with the smallest distance
 Assume we have graph has structed like below:
 
 ```python
-N = 10  # number of vertex in graph
+N = 10 
 M = 20
 graph = [[] for _ in range(N + 1)]
 
-# 
 for i in range(M):
     a, b, weight = map(int, input().split())
     graph[a].append((b, weight))
@@ -142,7 +141,7 @@ def dijkstra(graph, src, N, K, target):
 
             if (distance[adj] > new_distance):
                 distance[adj] = distance[curnode] + adj_weight
-                q.put((new_time, adj))
+                q.put((new_distance, adj))
 
     print(-1)
 ```
@@ -174,7 +173,7 @@ def dijkstra(src, target, N, graph, removed_edge):
 
 ## Exercise:
 
-You are travelling on a ship in an archipelago. The ship has a convex hull which is *K* centimetres thick. The archipelago has *N* islands, numbered from *1* to *N*. There are *M* sea routes amongst them, where the ith route runs directly between two different islands *a<sub>i</sub>* and *b<sub>i</sub>* *(1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ N)*,takes *t<sub>i</sub>* minutes to travel along in either direction. There may be multiple routes running between a pair of islands.
+You are travelling on a ship in an archipelago. The archipelago has *N* islands, numbered from *1* to *N*. There are *M* sea routes amongst them, where the ith route runs directly between two different islands *a<sub>i</sub>* and *b<sub>i</sub>* *(1 ≤ a<sub>i</sub>, b<sub>i</sub> ≤ N)*,takes *t<sub>i</sub>* minutes to travel along in either direction. There may be multiple routes running between a pair of islands.
 
 You would like to travel from island *A* to a different island *B* *(1 ≤ A, B ≤ N)* along a sequence of sea routes
 
